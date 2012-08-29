@@ -2,14 +2,14 @@ program Snake;
 
 uses
   Forms,
-  UfrmCanvas in '..\PAS\UfrmCanvas.pas' {frmCanvas},
-  UnitMiniGames in '..\..\API\UnitMiniGames.pas',
-  UfrmSpaceBall in '..\PAS\UfrmSpaceBall.pas' {frmSpaceBall};
+  UfrmSnake in '..\PAS\UfrmSnake.pas' {frmSnake},
+  UnitMiniGames in '..\..\API\UnitMiniGames.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TfrmSpaceBall, frmSpaceBall);
+  Application.Title := 'Snake';
+  Application.CreateForm(TfrmSnake, frmSnake);
   Application.Run;
 end.

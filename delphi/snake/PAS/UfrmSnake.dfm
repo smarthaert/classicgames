@@ -1,8 +1,8 @@
-object frmCanvas: TfrmCanvas
+object frmSnake: TfrmSnake
   Left = 329
   Top = 171
   BorderStyle = bsSingle
-  Caption = 'frmCanvas'
+  Caption = 'Snake'
   ClientHeight = 483
   ClientWidth = 502
   Color = clWhite

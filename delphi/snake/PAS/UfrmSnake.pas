@@ -1,4 +1,4 @@
-unit UfrmCanvas;
+unit UfrmSnake;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   UnitMiniGames, StdCtrls;
 
 type
-  TfrmCanvas = class(TForm)
+  TfrmSnake = class(TForm)
     Timer1: TTimer;
     Label1: TLabel;
     procedure Timer1Timer(Sender: TObject);
@@ -31,7 +31,7 @@ type
   end;
 
 var
-  frmCanvas: TfrmCanvas;
+  frmSnake: TfrmSnake;
 
 implementation
 
@@ -39,7 +39,7 @@ uses Types, Math;
 
 {$R *.dfm}
 
-procedure TfrmCanvas.Timer1Timer(Sender: TObject);
+procedure TfrmSnake.Timer1Timer(Sender: TObject);
 var result : TPoint;
 begin
   clearCanvas();
@@ -61,7 +61,7 @@ begin
   end;
 end;
 
-procedure TfrmCanvas.FormCreate(Sender: TObject);
+procedure TfrmSnake.FormCreate(Sender: TObject);
 begin
    DoubleBuffered := true;
    food := TBlock.create(15,15);
@@ -75,7 +75,7 @@ begin
    resetFood();
 end;
 
-procedure TfrmCanvas.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TfrmSnake.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   try
     FreeAndNil(blocks);
@@ -86,7 +86,7 @@ begin
   end;
 end;
 
-procedure TfrmCanvas.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TfrmSnake.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
@@ -97,7 +97,7 @@ begin
   end;//case
 end;
 
-procedure TfrmCanvas.chekFood;
+procedure TfrmSnake.chekFood;
 begin
   if snake.checkColision(food.getPointLocation) then
   begin
@@ -107,7 +107,7 @@ begin
   end;
 end;
 
-procedure TfrmCanvas.resetFood;
+procedure TfrmSnake.resetFood;
 var index : integer;
 begin
   index := RandomRange(0, blocks.getCount - 1);
@@ -115,7 +115,7 @@ begin
   food.paint(self.Canvas);
 end;
 
-procedure TfrmCanvas.resetBlocks;
+procedure TfrmSnake.resetBlocks;
 var x , y : Integer;
 begin
    blocks.clear;
@@ -125,13 +125,13 @@ begin
      blocks.add(x * 10, y * 10);
 end;
 
-procedure TfrmCanvas.clearCanvas;
+procedure TfrmSnake.clearCanvas;
 begin
   canvas.brush.color := clwhite;
   Canvas.FillRect(Rect(0,0,500,500));
 end;
 
-procedure TfrmCanvas.doGameOver;
+procedure TfrmSnake.doGameOver;
 begin
   label1.visible := true;
   Timer1.Enabled := false;
