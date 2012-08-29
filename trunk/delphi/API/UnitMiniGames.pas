@@ -18,6 +18,27 @@ type
     procedure tick(time : LongInt);
   end;
 
+  IAttackable = Interface
+    procedure Attack(intensity : double; efficacy: byte);
+  end;//IAttackable
+
+  TGameItem = class(TInterfacedObject, IPrintable, ITickable)
+  private
+    _x, _y, _width, _height : Integer;
+  public
+    procedure setSize(width ,height : Integer);
+    procedure setLocation(x, y : Integer);
+    procedure paint(c : Tcanvas);
+    procedure tick(time : LongInt);
+  end;//TGameitem
+
+  TAttacker = class(TGameItem)
+  private
+
+  public
+    procedure seekAndDestroy(target : TPoint);
+  end;//TAttacker
+
   TBlock = class(TInterfacedObject, IColisionBox, IPrintable)
   private
     _color : TColor;
@@ -651,6 +672,35 @@ begin
   _location.x := _location.x + _direction.x;
   if _timeToResetDirection > 0 then dec(_timeToResetDirection)
   else _direction.x := 0;
+
+end;
+
+{ TGameItem }
+
+procedure TGameItem.paint(c: Tcanvas);
+begin
+
+end;
+
+procedure TGameItem.setLocation(x, y: Integer);
+begin
+
+end;
+
+procedure TGameItem.setSize(width, height: Integer);
+begin
+
+end;
+
+procedure TGameItem.tick(time: Integer);
+begin
+
+end;
+
+{ TAttacker }
+
+procedure TAttacker.seekAndDestroy(target: TPoint);
+begin
 
 end;
 
